@@ -1,9 +1,31 @@
-## Hi there 👋
+# 👋 Hi, I'm Clyntor
 
-- 🔭 I’m currently working on the Aegisum blockchain
-- 🌱 I’m currently learning web development
-- 👯 I’m looking to collaborate on security solutions
-- 🤔 I’m looking for help with managing front-end
-- 💬 Ask me about Aegisum
-- 📫 How to reach me: hello@clyntor.dev
-- ⚡ Fun fact: It takes less effort to smile than to frown
+I'm a web developer and the Project Lead behind [Aegisum](https://aegisum.com) — a cryptocurrency focused on scam prevention and education.
+
+---
+
+## 🚀 What I’m Working On
+
+- 🔭 Maintaining the **Aegisum blockchain** and wallet tools
+- 🌱 Learning and refining my **web development** skills
+- 👯 Open to collaboration on **security tools** and wallet UX
+- 🤔 Seeking help with **front-end design systems**
+- 💬 Ask me about **Aegisum**, blockchain dev, or PoW tech
+- ⚡ Fun fact: *It takes less effort to smile than to frown* 😄
+
+---
+
+## 📫 Reach Me
+
+- 📧 Email: [hello@clyntor.dev](mailto:hello@clyntor.dev)  
+- 🦋 BlueSky: [clyntor.dev](https://bsky.app/profile/clyntor.dev)
+
+---
+
+## 🌐 My Website
+
+You can also find my portfolio at:  
+- [https://clyntor.github.io/clyntor](https://clyntor.github.io/clyntor)
+- [https://clyntor.dev](https://clyntor.dev)
+
+Built with pure [HTML](https://github.com/clyntor/clyntor/blob/main/index.html) + [CSS](https://github.com/clyntor/clyntor/blob/main/styles.css).
