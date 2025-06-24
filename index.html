@@ -43,7 +43,7 @@
             <div class="section-content">
                 <h2 class="slide-in">Building the Future of Blockchain</h2>
                 <p class="subtitle slide-in">I'm Clyntor — crafting secure crypto solutions & web experiences</p>
-                <img src="assets/logo.png" class="logo slide-in" alt="Clynt's profile logo">
+                <img src="public/logo.png" class="logo slide-in" alt="Clynt's profile logo">
             </div>
         </section>
 
@@ -93,10 +93,10 @@
                                     <li>And more!</li>
                                 </ul>
                             </div>
-                            <img src="assets/sc.png" alt="Aegisum Web Wallet Screenshot" class="wallet-img">
+                            <img src="public/sc.png" alt="Aegisum Web Wallet Screenshot" class="wallet-img">
                         </div>
                     </article>
-
+                    
                     <article class="project slide-in">
                         <h3>
                             <a href="https://explorer.aegisum.com" target="_blank" rel="noopener noreferrer">
@@ -108,8 +108,18 @@
                             <a href="https://github.com/clyntor/aegisum-block-explorer?tab=readme-ov-file#%EF%B8%8F-installation-guide" target="_blank" rel="noopener noreferrer">docs</a>.
                             All you need is Aegisum Core running and you can get started.
                         </p>
-                    </article>
+                    </article>                                     
 
+                    <article class="project slide-in">
+                        <h3>
+                            <a href="https://pool.aegisum.com" target="_blank" rel="noopener noreferrer">Aegisum Mining Pool</a>
+                        </h3>
+                        <p>
+                            Official Aegisum mining pool with 0% fees and no registration required. 
+                            Features automatic hourly payouts, proportional block distribution, and comprehensive mining statistics. 
+                            Simply use your wallet address as the username and start mining immediately.
+                        </p>
+                    </article>
 
                     <article class="project slide-in">
                         <h3>
@@ -117,8 +127,8 @@
                         </h3>
                         <p>
                             A dedicated faucet for free Aegisum coins with tiered payouts based on faucet balance. 
-                            Perfect for testing and development, users can claim free AEGS every hour. 
-                            Features a clean interface with automatic payout adjustments and advanced anti-bot / abuse systems.
+                            Perfect for testing and development, users can claim free AEGS tokens every hour. 
+                            Features a clean interface with automatic payout adjustments and anti-abuse features.
                         </p>
                     </article>
 
@@ -131,18 +141,7 @@
                             the website sees significant traffic. We host the education centre there, and it's the hub of everything Aegisum.
                         </p>
                     </article>
-
-                    <article class="project slide-in">
-                        <h3>
-                            <a href="https://pool.aegisum.com" target="_blank" rel="noopener noreferrer">Aegisum Mining Pool</a>
-                        </h3>
-                        <p>
-                            Official Aegisum mining pool with 0% fees and no registration required. 
-                            Features automatic hourly payouts, proportional block distribution, and comprehensive mining statistics. 
-                            Simply use your wallet address as the username and start mining immediately.
-                        </p>
-                    </article>                    
-
+                    
                 </div>
             </div>
         </section>
@@ -192,6 +191,12 @@
         const projectsGrid = document.getElementById('projects-grid');
         let isScrolling = false;
         let currentSection = 'home';
+        let isMobile = window.innerWidth <= 768;
+
+        // Update mobile state on resize
+        window.addEventListener('resize', () => {
+            isMobile = window.innerWidth <= 768;
+        });
 
         // Check if user is in projects section
         function isInProjectsSection() {
@@ -211,8 +216,11 @@
             return scrollTop + clientHeight >= scrollHeight - 5;
         }
 
-        // Convert vertical scroll to horizontal scroll or projects scroll
+        // Convert vertical scroll to horizontal scroll or projects scroll (desktop only)
         function handleWheel(e) {
+            // Skip custom scroll handling on mobile
+            if (isMobile) return;
+
             // Prevent default vertical scrolling
             e.preventDefault();
             
@@ -270,10 +278,12 @@
             }, 800);
         }
 
-        // Add wheel event listeners for different browsers
-        document.addEventListener('wheel', handleWheel, { passive: false });
-        document.addEventListener('DOMMouseScroll', handleWheel, { passive: false }); // Firefox
-        document.addEventListener('mousewheel', handleWheel, { passive: false }); // Older browsers
+        // Add wheel event listeners for different browsers (desktop only)
+        if (!isMobile) {
+            document.addEventListener('wheel', handleWheel, { passive: false });
+            document.addEventListener('DOMMouseScroll', handleWheel, { passive: false }); // Firefox
+            document.addEventListener('mousewheel', handleWheel, { passive: false }); // Older browsers
+        }
 
         // Smooth scroll navigation
         document.querySelectorAll('.nav-link').forEach(link => {
@@ -281,7 +291,14 @@
                 e.preventDefault();
                 const targetId = link.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
-                targetSection.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+                
+                if (isMobile) {
+                    // Mobile: normal scroll to element
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // Desktop: horizontal scroll
+                    targetSection.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+                }
                 
                 // Update active nav link
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -320,17 +337,35 @@
                     }
                 }
             });
-        }, { threshold: 0.6, root: scrollContainer });
+        }, { 
+            threshold: 0.6, 
+            root: isMobile ? null : scrollContainer 
+        });
 
         sections.forEach(section => observer.observe(section));
 
         // Update scroll progress
-        scrollContainer.addEventListener('scroll', () => {
-            const scrollLeft = scrollContainer.scrollLeft;
-            const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-            const progress = (scrollLeft / maxScroll) * 100;
-            scrollProgress.style.width = `${progress}%`;
-        });
+        function updateScrollProgress() {
+            if (isMobile) {
+                // Mobile: vertical scroll progress
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (scrollTop / scrollHeight) * 100;
+                scrollProgress.style.width = `${progress}%`;
+            } else {
+                // Desktop: horizontal scroll progress
+                const scrollLeft = scrollContainer.scrollLeft;
+                const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+                const progress = (scrollLeft / maxScroll) * 100;
+                scrollProgress.style.width = `${progress}%`;
+            }
+        }
+
+        if (isMobile) {
+            window.addEventListener('scroll', updateScrollProgress);
+        } else {
+            scrollContainer.addEventListener('scroll', updateScrollProgress);
+        }
 
         // Slide in animation on scroll
         const slideElements = document.querySelectorAll('.slide-in');
@@ -340,7 +375,10 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1, root: scrollContainer });
+        }, { 
+            threshold: 0.1, 
+            root: isMobile ? null : scrollContainer 
+        });
 
         slideElements.forEach(element => slideObserver.observe(element));
 
@@ -370,8 +408,10 @@
             });
         }
 
-        // Enhanced keyboard navigation with projects support
+        // Enhanced keyboard navigation with projects support (desktop only)
         document.addEventListener('keydown', (e) => {
+            if (isMobile) return; // Skip on mobile
+            
             if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
                 e.preventDefault();
                 
@@ -418,74 +458,76 @@
             }
         });
 
-        // Touch/swipe support for mobile
+        // Touch/swipe support for mobile (simplified)
         let touchStartX = 0;
         let touchEndX = 0;
         let touchStartY = 0;
         let touchEndY = 0;
 
-        scrollContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        });
+        if (!isMobile) {
+            scrollContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            });
 
-        scrollContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        });
+            scrollContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                touchEndY = e.changedTouches[0].screenY;
+                handleSwipe();
+            });
 
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diffX = touchStartX - touchEndX;
-            const diffY = touchStartY - touchEndY;
-            
-            // Determine if it's a vertical or horizontal swipe
-            if (Math.abs(diffY) > Math.abs(diffX)) {
-                // Vertical swipe - handle projects section
-                if (isInProjectsSection() && Math.abs(diffY) > swipeThreshold) {
-                    if (diffY > 0 && !isProjectsAtBottom()) {
-                        // Swipe up = scroll down in projects
-                        projectsGrid.scrollBy({
-                            top: 200,
-                            behavior: 'smooth'
-                        });
-                        return;
-                    } else if (diffY < 0 && !isProjectsAtTop()) {
-                        // Swipe down = scroll up in projects
-                        projectsGrid.scrollBy({
-                            top: -200,
-                            behavior: 'smooth'
-                        });
-                        return;
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diffX = touchStartX - touchEndX;
+                const diffY = touchStartY - touchEndY;
+                
+                // Determine if it's a vertical or horizontal swipe
+                if (Math.abs(diffY) > Math.abs(diffX)) {
+                    // Vertical swipe - handle projects section
+                    if (isInProjectsSection() && Math.abs(diffY) > swipeThreshold) {
+                        if (diffY > 0 && !isProjectsAtBottom()) {
+                            // Swipe up = scroll down in projects
+                            projectsGrid.scrollBy({
+                                top: 200,
+                                behavior: 'smooth'
+                            });
+                            return;
+                        } else if (diffY < 0 && !isProjectsAtTop()) {
+                            // Swipe down = scroll up in projects
+                            projectsGrid.scrollBy({
+                                top: -200,
+                                behavior: 'smooth'
+                            });
+                            return;
+                        }
                     }
                 }
-            }
-            
-            // Horizontal swipe or projects at edge
-            if (Math.abs(diffX) > swipeThreshold) {
-                if (isScrolling) return;
-                isScrolling = true;
                 
-                const scrollAmount = window.innerWidth;
-                
-                if (diffX > 0) {
-                    // Swipe left = move right
-                    scrollContainer.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    // Swipe right = move left
-                    scrollContainer.scrollBy({
-                        left: -scrollAmount,
-                        behavior: 'smooth'
-                    });
+                // Horizontal swipe or projects at edge
+                if (Math.abs(diffX) > swipeThreshold) {
+                    if (isScrolling) return;
+                    isScrolling = true;
+                    
+                    const scrollAmount = window.innerWidth;
+                    
+                    if (diffX > 0) {
+                        // Swipe left = move right
+                        scrollContainer.scrollBy({
+                            left: scrollAmount,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Swipe right = move left
+                        scrollContainer.scrollBy({
+                            left: -scrollAmount,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 800);
                 }
-                
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 800);
             }
         }
     </script>
