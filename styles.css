@@ -700,14 +700,17 @@ body {
 
 /* Mobile/iOS: Complete vertical layout override */
 @media (max-width: 768px) {
+  /* Ensure proper mobile scrolling */
   html {
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Mobile: Complete layout change to vertical */
@@ -716,6 +719,7 @@ body {
     height: auto !important;
     overflow: visible !important;
     scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
   }
 
   .section {
@@ -814,6 +818,13 @@ body {
   .slide-in.visible {
     opacity: 1;
     transform: translateY(0) !important;
+  }
+
+  /* Remove any potential scroll interference */
+  .slide-in:nth-child(2),
+  .slide-in:nth-child(3),
+  .slide-in:nth-child(4) {
+    transition-delay: 0s !important;
   }
 }
 
