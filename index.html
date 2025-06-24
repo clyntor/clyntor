@@ -363,13 +363,116 @@
                 });
             });
 
-            // Section detection for navbar theming
+            // Different intersection observer settings for mobile vs desktop
+            const observerOptions = isMobile() ? {
+                threshold: [0.1, 0.3, 0.5, 0.7],
+                rootMargin: '-20% 0px -20% 0px',
+                root: null
+            } : {
+                threshold: 0.6,
+                root: document.querySelector('.scroll-container')
+            };
+
+            // Section detection for navbar theming and active states
             const sectionObserver = new IntersectionObserver((entries) => {
+                if (isMobile()) {
+                    // Mobile: Find the section with highest intersection ratio
+                    let maxRatio = 0;
+                    let activeEntry = null;
+                    
+                    entries.forEach(entry => {
+                        if (entry.intersectionRatio > maxRatio) {
+                            maxRatio = entry.intersectionRatio;
+                            activeEntry = entry;
+                        }
+                    });
+                    
+                    if (activeEntry && activeEntry.intersectionRatio > 0.3) {
+                        const id = activeEntry.target.getAttribute('id');
+                        updateActiveSection(id);
+                    }
+                } else {
+                    // Desktop: Original logic
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            updateActiveSection(id);
+                        }
+                    });
+                }
+                
+                function updateActiveSection(id) {
+                    // Update active nav
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                    
+                    // Navbar theme
+                    if (id === 'donate') {
+                        navbar.classList.add('green-theme');
+                    } else {
+                        navbar.classList.remove('green-theme');
+                    }
+                }
+            }, observerOptions);
+
+            sections.forEach(section => sectionObserver.observe(section));
+
+            // Slide-in animations with mobile-optimized settings
+            const slideObserverOptions = isMobile() ? {
+                threshold: 0.2,
+                rootMargin: '0px 0px -10% 0px',
+                root: null
+            } : {
+                threshold: 0.1,
+                root: document.querySelector('.scroll-container')
+            };
+
+            const slideObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, slideObserverOptions);
+
+            slideElements.forEach(element => slideObserver.observe(element));
+
+            // Mobile: Additional scroll-based nav update as backup
+            if (isMobile()) {
+                let scrollTimeout;
+                window.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        updateNavBasedOnScroll();
+                    }, 100);
+                }, { passive: true });
+        
+                function updateNavBasedOnScroll() {
+                    const scrollTop = window.pageYOffset;
+                    const windowHeight = window.innerHeight;
+                    const sections = document.querySelectorAll('.section');
+                    
+                    let activeSection = null;
+                    let minDistance = Infinity;
+                    
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        const sectionCenter = rect.top + rect.height / 2;
+                        const viewportCenter = windowHeight / 2;
+                        const distance = Math.abs(sectionCenter - viewportCenter);
                         
-                        // Update active nav
+                        if (distance < minDistance && rect.top < windowHeight && rect.bottom > 0) {
+                            minDistance = distance;
+                            activeSection = section;
+                        }
+                    });
+                    
+                    if (activeSection) {
+                        const id = activeSection.getAttribute('id');
                         navLinks.forEach(link => {
                             link.classList.remove('active');
                             if (link.getAttribute('href') === `#${id}`) {
@@ -377,35 +480,18 @@
                             }
                         });
                         
-                        // Navbar theme
+                        // Update navbar theme
                         if (id === 'donate') {
                             navbar.classList.add('green-theme');
                         } else {
                             navbar.classList.remove('green-theme');
                         }
                     }
-                });
-            }, { 
-                threshold: 0.6, 
-                root: isMobile() ? null : document.querySelector('.scroll-container')
-            });
-
-            sections.forEach(section => sectionObserver.observe(section));
+                }
+            }
 
             // Simple slide-in animations
             const slideElements = document.querySelectorAll('.slide-in');
-            const slideObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { 
-                threshold: 0.1,
-                root: isMobile() ? null : document.querySelector('.scroll-container')
-            });
-
-            slideElements.forEach(element => slideObserver.observe(element));
         }
 
         // Copy function
