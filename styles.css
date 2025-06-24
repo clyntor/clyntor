@@ -9,14 +9,12 @@ html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #0f1115;
   color: #e0e0e0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   line-height: 1.7;
-  overflow: hidden;
-  height: 100vh;
   background: #0f1115;
   position: relative;
 }
@@ -128,7 +126,7 @@ body {
   }
 }
 
-/* Horizontal scroll container with snap */
+/* Desktop: Horizontal scroll container */
 .scroll-container {
   display: flex;
   height: 100vh;
@@ -297,7 +295,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
 }
 
-/* Section Layout - Seamless Flow */
+/* Section Layout */
 .section {
   min-width: 100vw;
   height: 100vh;
@@ -333,7 +331,7 @@ body {
   z-index: 1;
 }
 
-/* Slide in animations - More fluid */
+/* Slide in animations */
 .slide-in {
   opacity: 0;
   transform: translateX(60px) translateY(20px);
@@ -357,7 +355,7 @@ body {
   transition-delay: 0.3s;
 }
 
-/* Hero Section - Flowing gradient */
+/* Hero Section */
 .hero::before {
   background: radial-gradient(
     ellipse 120% 80% at 50% 50%,
@@ -396,7 +394,7 @@ body {
   box-shadow: 0 0 50px rgba(0, 170, 255, 0.6), 0 0 100px rgba(0, 170, 255, 0.3);
 }
 
-/* About Section - Subtle gradient flow */
+/* About Section */
 .about::before {
   background: linear-gradient(135deg, rgba(26, 28, 33, 0.4) 0%, rgba(15, 17, 21, 0.6) 50%, rgba(20, 25, 30, 0.4) 100%);
 }
@@ -435,7 +433,7 @@ body {
   text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
 }
 
-/* Projects Section - Flowing background */
+/* Projects Section */
 .projects::before {
   background: radial-gradient(
     ellipse 150% 100% at 50% 0%,
@@ -547,7 +545,7 @@ body {
   box-shadow: 0 15px 40px rgba(0, 170, 255, 0.3);
 }
 
-/* Donate Section - Enhanced Green Theme */
+/* Donate Section */
 .donate::before {
   background: linear-gradient(
     135deg,
@@ -612,7 +610,6 @@ body {
   flex: 1;
   min-width: 300px;
   border: 1px solid rgba(0, 255, 170, 0.3);
-  overflow-x: auto;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0, 255, 170, 0.2);
 }
@@ -656,7 +653,7 @@ body {
   background: linear-gradient(135deg, #00cc88, #00ffaa);
 }
 
-/* Contact Section - Final gradient */
+/* Contact Section */
 .contact::before {
   background: radial-gradient(
     ellipse 120% 80% at 50% 100%,
@@ -702,8 +699,32 @@ body {
   background: linear-gradient(135deg, #1ad1ff, #00aaff);
 }
 
-/* Responsive Design */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
+  html {
+    overflow: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Mobile: Switch to vertical layout */
+  .scroll-container {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .section {
+    min-width: 100%;
+    height: auto;
+    min-height: 100vh;
+    scroll-snap-align: none;
+    padding: 80px 20px 60px;
+  }
+
   .nav-container {
     flex-direction: column;
     gap: 15px;
@@ -725,10 +746,6 @@ body {
     font-size: 0.9rem;
   }
 
-  .section {
-    padding: 120px 20px 40px;
-  }
-
   .hero h2 {
     font-size: 2.5rem;
   }
@@ -738,9 +755,21 @@ body {
     height: 150px;
   }
 
+  .about-text {
+    padding: 20px;
+    font-size: 1rem;
+  }
+
+  .projects-grid {
+    max-height: none;
+    overflow-y: visible;
+    gap: 20px;
+  }
+
   .wallet-hero-content {
     flex-direction: column;
     text-align: center;
+    gap: 20px;
   }
 
   .wallet-img {
@@ -765,23 +794,18 @@ body {
     min-width: auto;
     width: 100%;
     font-size: 0.85rem;
-    white-space: nowrap;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 255, 170, 0.5) transparent;
+    word-break: break-all;
+    white-space: normal;
+    text-align: center;
   }
 
-  .ltc-address::-webkit-scrollbar {
-    height: 4px;
+  /* Disable horizontal scroll behaviors on mobile */
+  .slide-in {
+    transform: translateY(20px);
   }
 
-  .ltc-address::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .ltc-address::-webkit-scrollbar-thumb {
-    background: rgba(0, 255, 170, 0.5);
-    border-radius: 2px;
+  .slide-in.visible {
+    transform: translateY(0);
   }
 }
 
@@ -805,12 +829,19 @@ body {
 
   .about-text,
   .contact p {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
-  .projects-grid {
-    max-height: 60vh;
+  .section {
+    padding: 80px 15px 40px;
+  }
+
+  .ltc {
+    padding: 20px;
+  }
+
+  .copy-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
   }
 }
-
-
