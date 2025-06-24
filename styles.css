@@ -9,7 +9,6 @@ html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #0f1115;
   color: #e0e0e0;
-  overflow-x: hidden;
 }
 
 body {
@@ -699,10 +698,11 @@ body {
   background: linear-gradient(135deg, #1ad1ff, #00aaff);
 }
 
-/* Mobile Responsive Design */
+/* Mobile/iOS: Complete vertical layout override */
 @media (max-width: 768px) {
   html {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   body {
@@ -710,19 +710,24 @@ body {
     overflow-y: auto;
   }
 
-  /* Mobile: Switch to vertical layout */
+  /* Mobile: Complete layout change to vertical */
   .scroll-container {
-    display: block;
-    height: auto;
-    overflow: visible;
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
   }
 
   .section {
-    min-width: 100%;
-    height: auto;
+    min-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
     min-height: 100vh;
-    scroll-snap-align: none;
-    padding: 80px 20px 60px;
+    scroll-snap-align: none !important;
+    padding: 100px 20px 60px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .nav-container {
@@ -761,8 +766,8 @@ body {
   }
 
   .projects-grid {
-    max-height: none;
-    overflow-y: visible;
+    max-height: none !important;
+    overflow-y: visible !important;
     gap: 20px;
   }
 
@@ -791,21 +796,24 @@ body {
   }
 
   .ltc-address {
-    min-width: auto;
-    width: 100%;
+    min-width: auto !important;
+    width: 100% !important;
     font-size: 0.85rem;
     word-break: break-all;
-    white-space: normal;
+    white-space: normal !important;
     text-align: center;
   }
 
-  /* Disable horizontal scroll behaviors on mobile */
+  /* Mobile: Simple slide animations */
   .slide-in {
-    transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(30px) !important;
+    transition: all 0.8s ease !important;
   }
 
   .slide-in.visible {
-    transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0) !important;
   }
 }
 
@@ -833,7 +841,7 @@ body {
   }
 
   .section {
-    padding: 80px 15px 40px;
+    padding: 100px 15px 40px !important;
   }
 
   .ltc {
