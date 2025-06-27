@@ -4,6 +4,7 @@ I'm a web developer and the Project Lead behind [Aegisum](https://aegisum.com) â
 
 ![Profile Views](https://komarev.com/ghpvc/?username=clyntor&label=Profile%20views&color=0e75b6&style=flat)
 
+![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=clyntor&theme=github-compact)
 
 ---
 
