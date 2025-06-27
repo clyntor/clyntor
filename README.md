@@ -12,9 +12,8 @@ I'm a web developer and the Project Lead behind [Aegisum](https://aegisum.com) �
 
 - 🔭 Maintaining the **Aegisum blockchain** and wallet tools
 - 🌱 Learning and refining my **web development** skills
-- 👯 Open to collaboration on **security tools** and wallet UX
-- 🤔 Seeking help with **front-end design systems**
-- 💬 Ask me about **Aegisum**, blockchain dev, or PoW tech
+- 👯 Open to collaboration on **security tools** and frontend design
+- 💬 Ask me about **Aegisum**
 - ⚡ Fun fact: *It takes less effort to smile than to frown* 😄
 
 ---
