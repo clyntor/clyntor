@@ -2,6 +2,9 @@
 
 I'm a web developer and the Project Lead behind [Aegisum](https://aegisum.com) — a cryptocurrency focused on scam prevention and education.
 
+![Profile Views](https://komarev.com/ghpvc/?username=clyntor&label=Profile%20views&color=0e75b6&style=flat)
+
+
 ---
 
 ## 🚀 What I’m Working On
