@@ -567,6 +567,77 @@ body {
   color: #d0d0d0;
 }
 
+/* Bitcoin Donation Styles */
+.btc {
+  background: rgba(26, 28, 33, 0.6);
+  padding: 30px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 165, 0, 0.4);
+  backdrop-filter: blur(15px);
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 165, 0, 0.2);
+}
+
+.btc:hover {
+  border-color: rgba(255, 165, 0, 0.6);
+  box-shadow: 0 15px 40px rgba(255, 165, 0, 0.3);
+}
+
+.btc h3 {
+  color: #ffa500;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+}
+
+.btc-address-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.btc-address {
+  white-space: nowrap;
+  font-family: "Courier New", monospace;
+  background: rgba(255, 165, 0, 0.15);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  flex: 1;
+  min-width: 300px;
+  border: 1px solid rgba(255, 165, 0, 0.3);
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(255, 165, 0, 0.2);
+  color: #ffa500;
+}
+
+.btc .copy-btn {
+  background: linear-gradient(135deg, #ffa500, #ff8c00);
+  color: #0f1115;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(255, 165, 0, 0.4);
+}
+
+.btc .copy-btn:hover {
+  box-shadow: 0 12px 30px rgba(255, 165, 0, 0.5);
+}
+
+.btc .copy-btn.copied {
+  background: linear-gradient(135deg, #ff8c00, #ffa500);
+}
+
+/* Litecoin Donation Styles */
 .ltc {
   background: rgba(26, 28, 33, 0.6);
   padding: 30px;
@@ -793,13 +864,15 @@ body {
     margin: 0 auto;
   }
 
-  .ltc-address-container {
+  .ltc-address-container,
+  .btc-address-container {
     flex-direction: column;
     align-items: center;
     gap: 15px;
   }
 
-  .ltc-address {
+  .ltc-address,
+  .btc-address {
     min-width: auto !important;
     width: 100% !important;
     font-size: 0.85rem;
@@ -855,7 +928,8 @@ body {
     padding: 100px 15px 40px !important;
   }
 
-  .ltc {
+  .ltc,
+  .btc {
     padding: 20px;
   }
 
