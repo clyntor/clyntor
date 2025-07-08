@@ -110,7 +110,6 @@
                         </p>
                     </article>
                     
-
                     <article class="project slide-in">
                         <h3>
                             <a href="https://pool.aegisum.com" target="_blank" rel="noopener noreferrer">Aegisum Mining Pool</a>
@@ -142,7 +141,6 @@
                             the website sees significant traffic. We host the education centre there, and it's the hub of everything Aegisum.
                         </p>
                     </article>
-
                 </div>
             </div>
         </section>
@@ -150,7 +148,19 @@
         <section id="donate" class="section donate">
             <div class="section-content">
                 <h2 class="slide-in">Like my work?</h2>
-                <p class="slide-in">Consider donating some Litecoin :^)</p>
+                <p class="slide-in">Consider donating some crypto :^)</p>
+                
+                <article class="btc slide-in">
+                    <h3>Bitcoin Address:</h3>
+                    <div class="btc-address-container">
+                        <h3 class="btc-address">bc1qwt2vw0h544rerxw8axqz6yl7rhtffk404rq08j</h3>
+                        <button class="copy-btn" onclick="copyBitcoinAddress()">
+                            <span class="copy-text">Copy</span>
+                            <span class="copied-text">Copied!</span>
+                        </button>
+                    </div>
+                </article>
+
                 <article class="ltc slide-in">
                     <h3>Litecoin Address:</h3>
                     <div class="ltc-address-container">
@@ -490,10 +500,32 @@
             }
         }
 
-        // Copy function
+        // Copy function for Bitcoin
+        function copyBitcoinAddress() {
+            const address = 'bc1qwt2vw0h544rerxw8axqz6yl7rhtffk404rq08j';
+            const copyBtn = event.target.closest('.copy-btn');
+            
+            navigator.clipboard.writeText(address).then(() => {
+                copyBtn.classList.add('copied');
+                setTimeout(() => copyBtn.classList.remove('copied'), 2000);
+            }).catch(() => {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = address;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                copyBtn.classList.add('copied');
+                setTimeout(() => copyBtn.classList.remove('copied'), 2000);
+            });
+        }
+
+        // Copy function for Litecoin
         function copyLitecoinAddress() {
             const address = 'ltc1qhetjeh5tv97u3cv2j4vnwdqacqz32tzq3qtrqm';
-            const copyBtn = document.querySelector('.copy-btn');
+            const copyBtn = event.target.closest('.copy-btn');
             
             navigator.clipboard.writeText(address).then(() => {
                 copyBtn.classList.add('copied');
