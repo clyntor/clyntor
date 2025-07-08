@@ -572,23 +572,23 @@ body {
   background: rgba(26, 28, 33, 0.6);
   padding: 30px;
   border-radius: 20px;
-  border: 2px solid rgba(255, 165, 0, 0.4);
+  border: 2px solid rgba(0, 255, 170, 0.4);
   backdrop-filter: blur(15px);
   max-width: 600px;
   margin: 0 auto 30px auto;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(255, 165, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2);
 }
 
 .btc:hover {
-  border-color: rgba(255, 165, 0, 0.6);
-  box-shadow: 0 15px 40px rgba(255, 165, 0, 0.3);
+  border-color: rgba(0, 255, 170, 0.6);
+  box-shadow: 0 15px 40px rgba(0, 255, 170, 0.3);
 }
 
 .btc h3 {
-  color: #ffa500;
+  color: #00ffaa;
   margin-bottom: 10px;
-  text-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+  text-shadow: 0 0 20px rgba(0, 255, 170, 0.4);
 }
 
 .btc-address-container {
@@ -603,20 +603,20 @@ body {
 .btc-address {
   white-space: nowrap;
   font-family: "Courier New", monospace;
-  background: rgba(255, 165, 0, 0.15);
+  background: rgba(0, 255, 170, 0.15);
   padding: 15px;
   border-radius: 10px;
   font-size: 1rem;
   flex: 1;
   min-width: 300px;
-  border: 1px solid rgba(255, 165, 0, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   text-align: center;
-  box-shadow: 0 5px 15px rgba(255, 165, 0, 0.2);
-  color: #ffa500;
+  box-shadow: 0 5px 15px rgba(0, 255, 170, 0.2);
+  color: #00ffaa;
 }
 
 .btc .copy-btn {
-  background: linear-gradient(135deg, #ffa500, #ff8c00);
+  background: linear-gradient(135deg, #00ffaa, #00cc88);
   color: #0f1115;
   border: none;
   padding: 15px 25px;
@@ -626,15 +626,15 @@ body {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(255, 165, 0, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 255, 170, 0.4);
 }
 
 .btc .copy-btn:hover {
-  box-shadow: 0 12px 30px rgba(255, 165, 0, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 255, 170, 0.5);
 }
 
 .btc .copy-btn.copied {
-  background: linear-gradient(135deg, #ff8c00, #ffa500);
+  background: linear-gradient(135deg, #00cc88, #00ffaa);
 }
 
 /* Litecoin Donation Styles */
