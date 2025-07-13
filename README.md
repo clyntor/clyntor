@@ -27,8 +27,6 @@ I'm a web developer and the Project Lead behind [Aegisum](https://aegisum.com) ‚
 
 ## üåê My Website
 
-You can also find my portfolio at:  
-- [https://clyntor.github.io/clyntor](https://clyntor.github.io/clyntor)
+You can also find my personal website here:  
 - [https://clyntor.dev](https://clyntor.dev)
 
-Built with pure [HTML](https://github.com/clyntor/clyntor/blob/main/index.html) + [CSS](https://github.com/clyntor/clyntor/blob/main/styles.css).
