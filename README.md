@@ -19,6 +19,7 @@ Lead Developer @ Aegisum
 - HTML
 - CSS
 - React
+- JavaScript
 - TypeScript
 
 ---
