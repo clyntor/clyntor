@@ -33,7 +33,6 @@ Combines advanced web technologies and blockchain to deliver secure, feature-ric
 
 ## Contact
 
-- Website: https://clyntor.dev
 - Email: hello@clyntor.dev
 - Bluesky: [clyntor.dev](https://bsky.app/profile/clyntor.dev)
 
