@@ -7,11 +7,9 @@ Lead Developer @ Aegisum
 
 ## About
 
-- Web developer with a focus on modern, robust applications.
 - Lead Developer at [Aegisum](https://aegisum.com)
 - In the crypto space since 2015.
-- Lifelong learner. Always building.
-
+- Handyman by day, web developer by night. I learn by doing, whether it's with hand tools or a code editor.
 ---
 
 ## Skills
