@@ -1,15 +1,15 @@
 # clyntor
 ![Profile Views](https://komarev.com/ghpvc/?username=clyntor&label=Profile%20views&color=0e75b6&style=flat)
 
-Lead Developer @ Aegisum
+Lead Developer of Aegisum
 
 ---
 
 ## About
 
-- Lead Developer at [Aegisum](https://aegisum.com)
 - In the crypto space since 2015.
-- Handyman by day, web developer by night. I learn by doing, whether it's with hand tools or a code editor.
+- Interested in expanding my knowledge on web development and blockchain.
+
 ---
 
 ## Skills
