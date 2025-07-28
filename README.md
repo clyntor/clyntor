@@ -1,9 +1,7 @@
-# clyntor - Lead Developer of Aegisum ![Profile Views](https://komarev.com/ghpvc/?username=clyntor&label=Profile%20views&color=0e75b6&style=flat)
+# Clyntor - Lead Developer of Aegisum 
+![Profile Views](https://komarev.com/ghpvc/?username=clyntor&label=Profile%20views&color=0e75b6&style=flat)
 
-
-![Clyntor's GitHub stats](https://github-readme-stats-hgk3.vercel.app/api?username=clyntor&theme=tokyonight)
-
-
+![Clyntor's GitHub Stats](https://github-readme-stats-hgk3.vercel.app/api?username=clyntor&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_rank=true)
 
 
 ---
@@ -12,6 +10,7 @@
 
 - In the crypto space since 2015.
 - Interested in expanding my knowledge on web development and blockchain.
+- Leading the way at Aegisum, as a founding member of the ecosystem.
 
 ---
 
