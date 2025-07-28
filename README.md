@@ -1,7 +1,7 @@
 # clyntor - Lead Developer of Aegisum ![Profile Views](https://komarev.com/ghpvc/?username=clyntor&label=Profile%20views&color=0e75b6&style=flat)
 
 
-[![Clyntor's GitHub stats](https://github-readme-stats.vercel.app/api?username=clyntor&theme=tokyonight)](https://github.com/anuraghazra/github-readme-stats)
+![Clyntor's GitHub stats](https://github-readme-stats-hgk3.vercel.app/api?username=clyntor&theme=tokyonight)
 
 
 
